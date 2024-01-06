@@ -1,3 +1,5 @@
+package pages;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -25,7 +27,7 @@ public class loginPage {
     public loginPage(WebDriver driver){
         PageFactory.initElements(driver, this);
     }
-    public void doLoginWithCred(String username, String password){
+    public  void doLoginWithCred(String username, String password){
         txtUserName.sendKeys(username);
         txtPassword.sendKeys(password);
         btnLogin.click();

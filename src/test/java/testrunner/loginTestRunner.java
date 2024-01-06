@@ -1,6 +1,10 @@
+package testrunner;
+
+import config.setupPage;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.loginPage;
 
 public class loginTestRunner extends setupPage {
     @Test(priority = 1)
