@@ -33,7 +33,7 @@ public class Utils {
 //        saveEmployees("jamal", "kudu","jamalKudu", generateRandomPassword(8));
 //    }
     public static String generateRandomPassword(int len) {
-        String chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"+"0123456789"
                 + "abcdefghijklmnopqrstuvwxyz" + "!@#$%&";
         Random randnumber = new Random();
         StringBuilder sb = new StringBuilder(len);
@@ -45,16 +45,12 @@ public class Utils {
     public static int generateRandomNumber(int min, int max) {
         return (int) Math.round(Math.random() * (max - min) + min);
     }
-//    public static String generateUserID(int len) {
-//        String chars = "0"
-//                + "123456789";
-//        Random rand = new Random();
-//        StringBuilder sb = new StringBuilder(len);
-//        for (int i = 0; i < len; i++)
-//            sb.append(chars.charAt(rand.nextInt(chars.length())));
-//        return sb.toString();
-//
-//    }
-
+    public static JSONObject getEmpID() throws IOException, ParseException {
+        String fileLocation="./src/test/resources/employees.json";
+        JSONParser parser=new JSONParser();
+        JSONArray empArray= (JSONArray) parser.parse(new FileReader(fileLocation));
+        JSONObject empObj= (JSONObject) empArray.get(empArray.size()-1);
+        return empObj;
+    }
 
 }
