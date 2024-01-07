@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -28,11 +29,17 @@ public class pimMenuPage {
 
     }
 
-    public void createEmployee(String firstName,String lastName,String userName,String password){
+    public void createEmployee(String firstName,String lastName,String employeeId,String userName,String password) throws InterruptedException {
         menuItems.get(1).click();
         btnSubmit.get(2).click();
         txtFirstName.sendKeys(firstName);
         txtLastName.sendKeys(lastName);
+        WebElement empID = txtFields.get(4);
+        Thread.sleep(1000);
+        empID.clear();
+        empID.sendKeys(Keys.CONTROL + "a");
+        empID.sendKeys(employeeId);
+        Thread.sleep(1000);
         toggleButton.click();
         txtFields.get(5).sendKeys(userName); //insert Username
         txtFields.get(6).sendKeys(password); //insert Password
