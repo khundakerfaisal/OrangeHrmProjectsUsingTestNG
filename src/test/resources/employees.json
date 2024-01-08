@@ -1,17 +1,1 @@
-[
-
-  {
-    "firstName": "Virgil",
-    "lastName": "Kilback",
-    "password": "b9CyKjV3",
-    "employeeID": "55897",
-    "userName": "mike.bergnaum"
-  },
-  {
-    "firstName": "Louvenia",
-    "lastName": "Dietrich",
-    "password": "1Mv4Xbv@",
-    "employeeID": "30916",
-    "userName": "clarita.konopelski"
-  }
-]
+[{"firstName":"Riley","lastName":"Effertz","password":"qf7liDQj","employeeID":"25772","userName":"tanna.feest"},{"firstName":"Gladis","lastName":"Bartoletti","password":"3Yav2L0H","employeeID":"12395","userName":"stacey.oberbrunner"},{"firstName":"Raja","lastName":"Devan","password":"UzvT%hOj","employeeID":"48469","userName":"houston.braun"},{"firstName":"Ester","lastName":"Marquardt","password":"Lw7zpbNE","employeeID":"49049","userName":"arminda.murazik"}]

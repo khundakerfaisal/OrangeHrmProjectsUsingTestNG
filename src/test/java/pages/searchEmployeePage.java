@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class searchEmployeeId {
+public class searchEmployeePage {
 
     @FindBy(className = "oxd-main-menu-item")
     List<WebElement> btnMenuItem;
@@ -18,17 +18,17 @@ public class searchEmployeeId {
     List<WebElement> txtSearchBox;
     @FindBy(className = "oxd-button")
     List<WebElement> btnSearch;
-    public searchEmployeeId(WebDriver driver) {
+    public searchEmployeePage(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }
 
     public void searchEmployee(String employeeID) throws InterruptedException {
         btnMenuItem.get(1).click();
-        Thread.sleep(10000);
+        Thread.sleep(1000);
         btnTabItem.get(1).click();
-        Thread.sleep(10000);
+        Thread.sleep(1000);
         txtSearchBox.get(1).sendKeys(employeeID);
-        Thread.sleep(10000);
+        Thread.sleep(1000);
         btnSearch.get(1).click();
     }
 

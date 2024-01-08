@@ -28,8 +28,7 @@ public class Utils {
 
     }
 
-    //    public static void main(String[] args) throws IOException, ParseException {
-////        saveEmployee("jamal","kudu","jamna","generateRandomPassword(8)");
+//        public static void main(String[] args) throws IOException, ParseException {
 //        saveEmployees("jamal", "kudu","jamalKudu", generateRandomPassword(8));
 //    }
     public static String generateRandomPassword(int len) {

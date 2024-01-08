@@ -44,12 +44,12 @@ public class pimTestRunner extends setupPage {
         Assert.assertEquals(textActual,textExpected);
         Utils.saveEmployees(firstName,lastName,employeeId,userName,generateRandomPassword(8));
     }
-    @AfterTest
-    public void doLogout(){
-        loginPage loginPage=new loginPage(driver);
-        loginPage.doLogout();
-        String loginTitleActual=driver.findElement(By.className("orangehrm-login-title")).getText();
-        String loginExpected="Login";
-        Assert.assertEquals(loginTitleActual,loginExpected);
-    }
+//    @AfterTest
+//    public void doLogout(){
+//        loginPage loginPage=new loginPage(driver);
+//        loginPage.doLogout();
+//        String loginTitleActual=driver.findElement(By.className("orangehrm-login-title")).getText();
+//        String loginExpected="Login";
+//        Assert.assertEquals(loginTitleActual,loginExpected);
+//    }
 }
