@@ -2,6 +2,7 @@ package testrunner;
 
 import com.github.javafaker.Faker;
 import config.setupPage;
+import net.bytebuddy.build.Plugin;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -17,6 +18,7 @@ import utils.Utils;
 
 import java.io.IOException;
 import java.time.Duration;
+import java.util.PriorityQueue;
 
 import static utils.Utils.generateRandomPassword;
 
@@ -26,7 +28,37 @@ public class pimTestRunner extends setupPage {
         loginPage loginPage=new loginPage(driver);
         loginPage.doLoginWithCred("admin","admin123");
     }
-    @Test(priority = 1)
+    @Test(priority = 1, description = "Doesn't create employee without Username")
+    public void createWithoutUsername() throws IOException, ParseException, InterruptedException {
+        pimMenuPage pimMenuPage =new pimMenuPage(driver);
+        Faker faker=new Faker();
+        String firstName=faker.name().firstName();
+        String lastName=faker.name().lastName();
+        String employeeId = String.valueOf(Utils.generateRandomNumber(10000, 99999));
+        String password=generateRandomPassword();
+        pimMenuPage.createEmployee(firstName,lastName,employeeId,password);
+        String textActual = String.valueOf(driver.findElement(By.xpath("//span[text()='Required']")));
+//        System.out.println(textActual);
+        String textExpected = "Required";
+        Assert.assertTrue(textActual.contains(textExpected));
+    }
+    @Test(priority = 2, description = "Doesn't create employee without Password Matching")
+    public void createPasswordNotMatch() throws IOException, ParseException, InterruptedException {
+        pimMenuPage pimMenuPage =new pimMenuPage(driver);
+        Faker faker=new Faker();
+        String firstName=faker.name().firstName();
+        String lastName=faker.name().lastName();
+        String employeeId = String.valueOf(Utils.generateRandomNumber(10000, 99999));
+        String userName=faker.name().username();
+        String password="p1234567";
+        pimMenuPage.createEmployee(firstName,lastName,employeeId,userName,password);
+        String textActual = driver.findElements(By.className("oxd-text")).get(16).getText();;
+        System.out.println(textActual);
+        String textExpected = "For a strong password, please use a hard to guess combination of text with upper and lower case characters, symbols and numbers";
+        Assert.assertTrue(textActual.contains(textExpected));
+
+    }
+    @Test(priority = 3, description = "Create employee Successfully with valid info")
     public void createValidEmployeeID() throws IOException, ParseException, InterruptedException {
         pimMenuPage pimMenuPage =new pimMenuPage(driver);
         Faker faker=new Faker();
@@ -34,7 +66,8 @@ public class pimTestRunner extends setupPage {
         String lastName=faker.name().lastName();
         String employeeId = String.valueOf(Utils.generateRandomNumber(10000, 99999));
         String userName=faker.name().username();
-        String password=generateRandomPassword(8);
+        String password=generateRandomPassword();
+        System.out.println(password);
         pimMenuPage.createEmployee(firstName,lastName,employeeId,userName,password);
         WebElement headerText = driver.findElement(By.xpath("//h6[text()='Personal Details']"));
         WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(30));
@@ -42,14 +75,8 @@ public class pimTestRunner extends setupPage {
         String textActual=headerText.getText();
         String textExpected="Personal Details";
         Assert.assertEquals(textActual,textExpected);
-        Utils.saveEmployees(firstName,lastName,employeeId,userName,generateRandomPassword(8));
+        Utils.saveEmployees(firstName,lastName,employeeId,userName,password);
+
     }
-//    @AfterTest
-//    public void doLogout(){
-//        loginPage loginPage=new loginPage(driver);
-//        loginPage.doLogout();
-//        String loginTitleActual=driver.findElement(By.className("orangehrm-login-title")).getText();
-//        String loginExpected="Login";
-//        Assert.assertEquals(loginTitleActual,loginExpected);
-//    }
+
 }

@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 import pages.loginPage;
 
 public class loginTestRunner extends setupPage {
-    @Test(priority = 1)
+    @Test(priority = 1, description = "Invalid credential !Enter Valid credential")
     public void doLoginWithWrongCred() {
         loginPage loginPage = new loginPage(driver);
         loginPage.doLoginWithCred("admin", "wrong@123");
@@ -16,7 +16,7 @@ public class loginTestRunner extends setupPage {
         Assert.assertTrue(textActual.contains(textExpected));
     }
 
-    @Test(priority = 2)
+    @Test(priority = 2, description = "Admin Login successfully with Valid credential")
     public void doLoginWithValidCred() {
         loginPage loginPage = new loginPage(driver);
         loginPage.doLoginWithCred("admin", "admin123");

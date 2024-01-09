@@ -32,6 +32,9 @@ public class directoryPage {
         btnMenuItem.get(8).click();
         Thread.sleep(1000);
         txtSearchEmpName.get(1).sendKeys(firstName);
+        txtSearchEmpName.get(1).sendKeys(Keys.ARROW_DOWN);
+        txtSearchEmpName.get(1).sendKeys(Keys.ENTER);
+
 
         Thread.sleep(1000);
         btnSearch.get(1).click();

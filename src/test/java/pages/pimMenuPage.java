@@ -46,4 +46,20 @@ public class pimMenuPage {
         txtFields.get(7).sendKeys(password); //insert confirm password
         btnSubmit.get(1).click();
     }
+    public void createEmployee(String firstName,String lastName,String employeeId,String password) throws InterruptedException {
+        menuItems.get(1).click();
+        btnSubmit.get(2).click();
+        txtFirstName.sendKeys(firstName);
+        txtLastName.sendKeys(lastName);
+        WebElement empID = txtFields.get(4);
+        Thread.sleep(1000);
+        empID.clear();
+        empID.sendKeys(Keys.CONTROL + "a");
+        empID.sendKeys(employeeId);
+        Thread.sleep(1000);
+        toggleButton.click();
+        txtFields.get(6).sendKeys(password); //insert Password
+        txtFields.get(7).sendKeys(password); //insert confirm password
+        btnSubmit.get(1).click();
+    }
 }
