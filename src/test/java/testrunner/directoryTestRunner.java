@@ -20,7 +20,9 @@ public class directoryTestRunner extends setupPage {
     @BeforeTest
     public void login(){
         loginPage loginPage=new loginPage(driver);
-        loginPage.doLoginWithCred("admin","admin123");
+        String adminUser=System.getProperty("username");
+        String adminPass=System.getProperty("password");
+        loginPage.doLoginWithCred(adminUser,adminPass);
     }
     @Test(priority = 1, description = "Search by InValid Employee Name")
     public void SearchByfirstName() throws InterruptedException, IOException, ParseException {
@@ -30,7 +32,6 @@ public class directoryTestRunner extends setupPage {
         String lastName= Utils.getEmpID().get("lastName").toString();
         String fullName=(firstName+" "+lastName).trim();
         directorypage.searchByEmployeeName(firstName);
-
         directorypage.txtSearchEmpName.get(1).sendKeys(Keys.ENTER);
         directorypage.btnSearch.get(1).click();
         Thread.sleep(1500);
@@ -52,7 +53,6 @@ public class directoryTestRunner extends setupPage {
         System.out.println(firstName);
         directorypage.searchByEmployeeName(firstName);
         Thread.sleep(3000);
-
         directorypage.txtSearchEmpName.get(1).sendKeys(Keys.SPACE);
         Thread.sleep(2000);
         directorypage.txtSearchEmpName.get(1).sendKeys(Keys.ARROW_DOWN);
@@ -67,7 +67,7 @@ public class directoryTestRunner extends setupPage {
 //        System.out.println(textExpected);
         Assert.assertTrue(textActual.contains(textExpected));
     }
-    @AfterTest()
+    @AfterTest(description = "User Logout successfully")
         public void doLogout(){
         loginPage loginPage=new loginPage(driver);
         loginPage.doLogout();

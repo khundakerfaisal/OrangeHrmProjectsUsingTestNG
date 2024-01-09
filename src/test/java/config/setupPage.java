@@ -9,14 +9,14 @@ import java.time.Duration;
 
 public class setupPage {
     public WebDriver driver;
-    @BeforeTest
+    @BeforeTest(groups = "smoke")
     public void startBrowserConfig(){
         driver=new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         driver.get("https://opensource-demo.orangehrmlive.com/");
     }
-    @AfterTest
+    @AfterTest(groups = "smoke")
     public void closeBrowser(){
 //        driver.quit();
     }

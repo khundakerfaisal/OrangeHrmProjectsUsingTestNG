@@ -4,6 +4,7 @@ import config.setupPage;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.By;
 import org.testng.Assert;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pages.loginPage;
@@ -16,7 +17,9 @@ public class searchEmpTestRunner extends setupPage {
     @BeforeTest
     public void login(){
         loginPage loginPage=new loginPage(driver);
-        loginPage.doLoginWithCred("admin","admin123");
+        String adminUser=System.getProperty("username");
+        String adminPass=System.getProperty("password");
+        loginPage.doLoginWithCred(adminUser,adminPass);
     }
     @Test(priority = 1, description = "Invalid Employee ID ")
     public void searchByEmployeeInvalidId() throws IOException, ParseException, InterruptedException {
@@ -29,7 +32,7 @@ public class searchEmpTestRunner extends setupPage {
 //        System.out.println(textExpected);
         Assert.assertTrue(textActual.contains(textExpected));
     }
-    @Test(priority = 2, description = "Search by updated Employee Id")
+    @Test(priority = 2, groups = "smoke", description = "Search by updated Employee Id")
     public void searchByEmployeeId() throws IOException, ParseException, InterruptedException {
         searchEmployeePage searchEmployeePage =new searchEmployeePage(driver);
         String employeeID= Utils.getEmpID().get("employeeID").toString();
@@ -41,6 +44,10 @@ public class searchEmpTestRunner extends setupPage {
 //        System.out.println(textExpected);
         Assert.assertTrue(textActual.contains(textExpected));
     }
-
+    @AfterTest(groups = "smoke")
+    public void doLogout() {
+        loginPage loginPage=new loginPage(driver);
+        loginPage.doLogout();
+    }
 
 }

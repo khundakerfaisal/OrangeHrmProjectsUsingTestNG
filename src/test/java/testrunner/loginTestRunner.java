@@ -16,15 +16,16 @@ public class loginTestRunner extends setupPage {
         Assert.assertTrue(textActual.contains(textExpected));
     }
 
-    @Test(priority = 2, description = "Admin Login successfully with Valid credential")
+    @Test(priority = 2,groups = "smoke",description = "Admin Login successfully with Valid credential")
     public void doLoginWithValidCred() {
         loginPage loginPage = new loginPage(driver);
-        loginPage.doLoginWithCred("admin", "admin123");
+        String adminUser=System.getProperty("username");
+        String adminPass=System.getProperty("password");
+        loginPage.doLoginWithCred(adminUser,adminPass);
         boolean isImageExists = driver.findElement(By.className("oxd-userdropdown-img")).isDisplayed();
         Assert.assertTrue(isImageExists);
 
     }
-    @Test(priority = 3)
 
     public void doLogout() {
         loginPage loginPage=new loginPage(driver);

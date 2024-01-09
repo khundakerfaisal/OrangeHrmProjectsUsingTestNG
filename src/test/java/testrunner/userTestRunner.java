@@ -13,7 +13,6 @@ import utils.Utils;
 import java.io.IOException;
 
 public class userTestRunner extends setupPage {
-
     loginPage loginPage;
     @Test(priority = 3,description = "Login with unauthorized user")
     public void doLoginByUnauthorizedUser() throws IOException, ParseException {
@@ -28,36 +27,34 @@ public class userTestRunner extends setupPage {
         String textExpected="Invalid credentials";
         Assert.assertTrue(textActual.contains(textExpected));
     }
-    @Test(priority = 4,description="Login Successfully! And full name is comming besidr the profile icon")
+    @Test(priority = 4,groups = "smoke", description="User Login Successfully with valid Credential")
     public void doLoginByUser() throws IOException, ParseException {
-         loginPage=new loginPage(driver);
-        String firstName= Utils.getEmpID().get("firstName").toString();
-        String lastName= Utils.getEmpID().get("lastName").toString();
-        String fullName=firstName+" "+lastName;
-
-        String userName= Utils.getEmpID().get("userName").toString();
-        String password= Utils.getEmpID().get("password").toString();
-         loginPage.doLoginWithCred(userName,password);
+        loginPage = new loginPage(driver);
+        String firstName = Utils.getEmpID().get("firstName").toString();
+        String lastName = Utils.getEmpID().get("lastName").toString();
+        String userName = Utils.getEmpID().get("userName").toString();
+        String password = Utils.getEmpID().get("password").toString();
+        loginPage.doLoginWithCred(userName, password);
+        String fullName = firstName + " " + lastName;
         String textActual=driver.findElement(By.className("oxd-userdropdown-name")).getText();
-//        System.out.println(textActual);
+        System.out.println(textActual);
         String textExpected=fullName;
-//        System.out.println(textExpected);
+        System.out.println(textExpected);
         Assert.assertTrue(textActual.contains(textExpected));
+
     }
-//    @Test(priority = 5,description="Full name is showing successfully")
-//    public void UserLoginWithFullNameCheck() throws IOException, ParseException {
-//        loginPage=new loginPage(driver);
-//        String firstName= Utils.getEmpID().get("firstName").toString();
-//        String lastName= Utils.getEmpID().get("lastName").toString();
-//        String fullName=firstName+" "+lastName;
-//
-//        String userName= Utils.getEmpID().get("userName").toString();
-//        String password= Utils.getEmpID().get("password").toString();
-//        loginPage.doLoginWithCred(userName,password);
-//        String textActual=driver.findElement(By.className("oxd-userdropdown-name")).getText();
-////        System.out.println(textActual);
-//        String textExpected=fullName;
-////        System.out.println(textExpected);
-//        Assert.assertTrue(textActual.contains(textExpected));
-//    }
+    @Test(priority = 5,description="Full name is showing successfully")
+    public void fullNameCheck() throws IOException, ParseException {
+        loginPage = new loginPage(driver);
+        String firstName = Utils.getEmpID().get("firstName").toString();
+        String lastName = Utils.getEmpID().get("lastName").toString();
+        String fullName = firstName + " " + lastName;
+        String textActual=driver.findElement(By.className("oxd-userdropdown-name")).getText();
+        System.out.println(textActual);
+        String textExpected=fullName;
+        System.out.println(textExpected);
+        Assert.assertTrue(textActual.contains(textExpected));
+
+    }
+
 }

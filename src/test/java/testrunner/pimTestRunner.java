@@ -26,7 +26,9 @@ public class pimTestRunner extends setupPage {
     @BeforeTest
     public void login(){
         loginPage loginPage=new loginPage(driver);
-        loginPage.doLoginWithCred("admin","admin123");
+        String adminUser=System.getProperty("username");
+        String adminPass=System.getProperty("password");
+        loginPage.doLoginWithCred(adminUser,adminPass);
     }
     @Test(priority = 1, description = "Doesn't create employee without Username")
     public void createWithoutUsername() throws IOException, ParseException, InterruptedException {
