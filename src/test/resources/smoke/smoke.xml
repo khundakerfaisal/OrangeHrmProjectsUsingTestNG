@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<suite name="Orange-HRM-Smoke-Testing">
+    <test name="Admin Login">
+        <groups>
+            <run>
+                <include name="smoke">
+
+                </include>
+            </run>
+        </groups>
+        <classes>
+
+    <class name="testrunner.loginTestRunner"/>
+        </classes>
+    </test>
+
+    <test name="Search Employee By EmployeeID">
+        <groups>
+            <run>
+                <include name="smoke">
+
+                </include>
+            </run>
+        </groups>
+        <classes>
+            <class name="testrunner.searchEmpTestRunner"/>
+
+        </classes>
+    </test>
+
+    <test name="Login with User Credential">
+        <groups>
+            <run>
+                <include name="smoke"></include>
+            </run>
+        </groups>
+        <classes>
+            <class name="testrunner.userTestRunner"/>
+
+        </classes>
+    </test>
+
+    <test name="User my info gender and blood group added">
+        <groups>
+            <run>
+                <include name="smoke"></include>
+            </run>
+        </groups>
+        <classes>
+            <class name="testrunner.myInfoTestRunner"/>
+
+        </classes>
+    </test>
+</suite>
