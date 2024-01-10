@@ -32,3 +32,5 @@ https://drive.google.com/file/d/1m2KVSdQDQ5BaCenvyR2fGHUVVlnEvh6r/view?usp=shari
 
 ## Smoke Automation Output Video:
 https://drive.google.com/file/d/1_xuglUBFpLf0nbqdd-ztoScmisCEsQEY/view?usp=sharing
+## Test Cases
+https://docs.google.com/spreadsheets/d/1av9wPJ_Oqzj4pldBFektbmXuFnewF70h/edit?usp=sharing&ouid=101713067954447514942&rtpof=true&sd=true
