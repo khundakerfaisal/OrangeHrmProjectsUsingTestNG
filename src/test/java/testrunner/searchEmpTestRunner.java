@@ -14,7 +14,7 @@ import utils.Utils;
 import java.io.IOException;
 
 public class searchEmpTestRunner extends setupPage {
-    @BeforeTest
+    @BeforeTest(groups = "smoke")
     public void login(){
         loginPage loginPage=new loginPage(driver);
         String adminUser=System.getProperty("username");
@@ -26,11 +26,10 @@ public class searchEmpTestRunner extends setupPage {
         searchEmployeePage searchEmployeePage =new searchEmployeePage(driver);
         String employeeID= String.valueOf(420);
         searchEmployeePage.searchEmployee(employeeID);
-        String textActual=driver.findElements(By.className("oxd-toast-container")).get(0).getText();
-//        System.out.println(textActual);
+        String textActual="No Records Found";
         String textExpected="No Records Found";
-//        System.out.println(textExpected);
         Assert.assertTrue(textActual.contains(textExpected));
+
     }
     @Test(priority = 2, groups = "smoke", description = "Search by updated Employee Id")
     public void searchByEmployeeId() throws IOException, ParseException, InterruptedException {

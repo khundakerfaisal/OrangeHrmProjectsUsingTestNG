@@ -1,9 +1,6 @@
 package pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utils.Utils;
@@ -26,19 +23,22 @@ public class myInfoPage {
 
     }
     WebDriver driver;
-    public void selectGenderAndBlood() throws InterruptedException {
+    public void selectGenderAndBlood(String blood) throws InterruptedException {
         menuItems.get(5).click();
+        dropdownSelection.get(2).click();
+        dropdownSelection.get(2).sendKeys(Keys.ARROW_DOWN);
+        Thread.sleep(1000);
+        dropdownSelection.get(2).sendKeys(Keys.ARROW_DOWN);
+        Thread.sleep(1000);
+        dropdownSelection.get(2).sendKeys(Keys.ENTER);
+        Thread.sleep(1000);
 
-//        radioButton.click();
-////        radioButton.sendKeys(gender);
-//        Thread.sleep(1000);
-//        btnSubmit.get(0).click();
-//        Utils.scrollPage(driver);
-//        Thread.sleep(1000);
-//        dropdownSelection.get(2).click();
-//        dropdownSelection.get(2).sendKeys("O+");
-//        Thread.sleep(1000);
-//        btnSubmit.get(1).click();
+        Thread.sleep(1000);
+//        bloodDropdown.clear();
+
+
+        Thread.sleep(1000);
+
 
     }
 }

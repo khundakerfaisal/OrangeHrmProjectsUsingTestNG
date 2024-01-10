@@ -22,16 +22,29 @@ import javax.lang.model.element.ExecutableElement;
 import javax.swing.*;
 import java.io.IOException;
 import java.time.Duration;
+import java.util.List;
 
 public class myInfoTestRunner extends setupPage {
-    @BeforeTest
+    @BeforeTest(groups = "smoke")
     public void login() throws IOException, ParseException {
         loginPage loginPage = new loginPage(driver);
         String userName= Utils.getEmpID().get("userName").toString();
         String password= Utils.getEmpID().get("password").toString();
         loginPage.doLoginWithCred(userName,password);
     }
-    @Test(priority = 1,description="Without Blood selection submit successfully")
+    @Test(priority = 1,description="Without gender selection submit successfully")
+    public void withoutGenderSelection() throws InterruptedException {
+        myInfoPage myInfoPage = new myInfoPage(driver);
+        myInfoPage.menuItems.get(2).click();
+        WebElement radioBtn1 = driver.findElement(By.xpath("//input[@type='radio' and @value='1']"));
+        JavascriptExecutor executor = (JavascriptExecutor) driver;
+        executor.executeScript("arguments[0].click();", radioBtn1);
+        WebElement genderSubmit = driver.findElements(By.className("oxd-button")).get(0);
+        Thread.sleep(1000);
+        genderSubmit.click();
+
+    }
+    @Test(priority = 2,description="Without Blood selection submit successfully")
     public void withoutSelectBlood() throws InterruptedException {
         myInfoPage myInfoPage = new myInfoPage(driver);
         myInfoPage.menuItems.get(2).click();
@@ -40,7 +53,8 @@ public class myInfoTestRunner extends setupPage {
         Thread.sleep(1000);
 
     }
-    @Test(priority = 2,description="Gender and Blood selection successfully")
+
+        @Test(priority = 3,description="Gender and Blood selection successfully")
     public void selectBloodAndGender() throws InterruptedException {
         myInfoPage myInfoPage = new myInfoPage(driver);
 //        myInfoPage.menuItems.get(5).click();
@@ -66,9 +80,14 @@ public class myInfoTestRunner extends setupPage {
         selectElement.sendKeys(Keys.ARROW_DOWN);
         selectElement.sendKeys(Keys.ARROW_DOWN);
         selectElement.sendKeys(Keys.ARROW_DOWN);
+        selectElement.sendKeys(Keys.ARROW_DOWN);
+        selectElement.sendKeys(Keys.ARROW_DOWN);
+        selectElement.sendKeys(Keys.ARROW_DOWN);
+
         selectElement.sendKeys(Keys.ENTER);
         String textActual=driver.findElements(By.className("oxd-select-text-input")).get(2).getText();
-        String textExpected="O+";
+//        String textExpected="O+";
+        String textExpected="AB-";
         Assert.assertTrue(textActual.contains(textExpected));
 //        Thread.sleep(3000);
         WebElement bloodSubmit = driver.findElements(By.className("oxd-button")).get(1);
@@ -76,12 +95,20 @@ public class myInfoTestRunner extends setupPage {
         bloodSubmit.click();
         Thread.sleep(1000);
     }
-    @Test(priority = 3,groups = "smoke",description="Blood group Updated successfully")
+
+
+    @Test(priority = 4,groups = "smoke",description="Blood group Updated successfully")
     public void updateBloodGroup() throws InterruptedException {
         myInfoPage myInfoPage = new myInfoPage(driver);
-//        myInfoPage.menuItems.get(5).click();
         myInfoPage.menuItems.get(2).click();
         Utils.scrollPage(driver);
+        WebElement radioBtn = driver.findElement(By.xpath("//input[@type='radio' and @value='1']"));
+        JavascriptExecutor executor = (JavascriptExecutor) driver;
+        executor.executeScript("arguments[0].click();", radioBtn);
+        WebElement genderSubmit = driver.findElements(By.className("oxd-button")).get(0);
+        Thread.sleep(1000);
+        genderSubmit.click();
+        Thread.sleep(1500);
         WebElement selectElement = driver.findElements(By.className("oxd-select-text-input")).get(2);
         JavascriptExecutor executor1 = (JavascriptExecutor) driver;
         executor1.executeScript("arguments[0].click();", selectElement);
@@ -95,8 +122,10 @@ public class myInfoTestRunner extends setupPage {
         selectElement.sendKeys(Keys.ARROW_DOWN);
         selectElement.sendKeys(Keys.ARROW_DOWN);
         selectElement.sendKeys(Keys.ARROW_DOWN);
+
         selectElement.sendKeys(Keys.ENTER);
         String textActual=driver.findElements(By.className("oxd-select-text-input")).get(2).getText();
+//        String textExpected="O+";
         String textExpected="AB-";
         Assert.assertTrue(textActual.contains(textExpected));
 //        Thread.sleep(3000);
@@ -105,6 +134,7 @@ public class myInfoTestRunner extends setupPage {
         bloodSubmit.click();
         Thread.sleep(1000);
     }
+
     @AfterTest(groups = "smoke")
     public void doLogout(){
         loginPage loginPage=new loginPage(driver);

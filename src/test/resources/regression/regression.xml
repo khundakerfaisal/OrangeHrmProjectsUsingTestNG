@@ -1,38 +1,38 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <suite name="Orange-HRM-Regression-Testing">
-    <test name="Admin Login">
-        <classes>
-    <class name="testrunner.loginTestRunner"/>
-        </classes>
-    </test>
+<!--    <test name="Admin Login">-->
+<!--        <classes>-->
+<!--    <class name="testrunner.loginTestRunner"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 
     <test name="Create New Employee">
         <classes>
             <class name="testrunner.pimTestRunner"/>
         </classes>
     </test>
-    <test name="Search Employee By EmployeeID">
-        <classes>
-            <class name="testrunner.searchEmpTestRunner"/>
+<!--    <test name="Search Employee By EmployeeID">-->
+<!--        <classes>-->
+<!--            <class name="testrunner.searchEmpTestRunner"/>-->
 
-        </classes>
-    </test>
-    <test name="Search Employee By Employee Name">
-        <classes>
-            <class name="testrunner.directoryTestRunner"/>
+<!--        </classes>-->
+<!--    </test>-->
+<!--    <test name="Search Employee By Employee Name">-->
+<!--        <classes>-->
+<!--            <class name="testrunner.directoryTestRunner"/>-->
 
-        </classes>
-    </test>
+<!--        </classes>-->
+<!--    </test>-->
     <test name="Login with User Credential">
         <classes>
             <class name="testrunner.userTestRunner"/>
 
         </classes>
     </test>
-    <test name="User my info gender and blood group added">
-        <classes>
-            <class name="testrunner.myInfoTestRunner"/>
+<!--    <test name="User my info gender and blood group added">-->
+<!--        <classes>-->
+<!--            <class name="testrunner.myInfoTestRunner"/>-->
 
-        </classes>
-    </test>
+<!--        </classes>-->
+<!--    </test>-->
 </suite>

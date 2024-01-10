@@ -87,7 +87,7 @@ public class Utils {
     public static void scrollPage(WebDriver driver){
         WebElement genderRadio = driver.findElement(By.xpath("//input[@type=\"radio\"]"));
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollBy(0,550)");
+        js.executeScript("window.scrollBy(0,650)");
 
     }
     public static int generateRandomNumber(int min, int max) {
