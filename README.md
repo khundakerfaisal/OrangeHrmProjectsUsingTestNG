@@ -13,7 +13,7 @@ Here We have create regression and smoke suite also and generate test case wise 
 
 ## How to run this project
 ## 🔗 Project Link
-- Clone this project: ```[Orange HRM Project] https://github.com/khundakerfaisal/OrangeHrmProjectsUsingTestNG```
+- Clone this project: [] https://github.com/khundakerfaisal/OrangeHrmProjectsUsingTestNG
 - Add dependencies in build.gradle file
 - Hit the following command into the terminal for regression suite: ```gradle clean test -Pusername="Enterusername" -Ppassword="EnterPassword" -PsuiteName="regresion.xml" **copy button**```
 - Hit the following command into the terminal smoke suite: ```gradle clean test -Pusername="Enterusername" -Ppassword="EnterPassword" -PsuiteName="smoke.xml"```
