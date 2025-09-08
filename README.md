@@ -12,18 +12,18 @@ Employee information stored and all other admin related activity.We have automat
 Here We have create regression and smoke suite also and generate test case wise report using gradle and allure report.
 
 ## How to run this project
-- ```Clone this project:```[](https://github.com/khundakerfaisal/OrangeHrmProjectsUsingTestNG)
+- ```Clone this project:```[(https://github.com/khundakerfaisal/OrangeHrmProjectsUsingTestNG)]
 - ```Add dependencies in build.gradle file```
 - ```Hit the following command into the terminal for regression suite:```
   ```bash
-  git clone gradle clean test -Pusername="Enterusername" -Ppassword="EnterPassword" -PsuiteName="regresion.xml" 
+  gradle clean test -Pusername="Enterusername" -Ppassword="EnterPassword" -PsuiteName="regresion.xml" 
 - ```Hit the following command into the terminal smoke suite:```
   ```bash
-  git clone gradle clean test -Pusername="Enterusername" -Ppassword="EnterPassword" -PsuiteName="smoke.xml"
+  gradle clean test -Pusername="Enterusername" -Ppassword="EnterPassword" -PsuiteName="smoke.xml"
 - ```For generating Allure Report use these commands:```
   ```bash
-  git clone allure generate allure-results
-  git clone allure serve allure-results
+   allure generate allure-results
+   allure serve allure-results
   
 ## Allure Report 
 
