@@ -24,6 +24,7 @@ Here We have create regression and smoke suite also and generate test case wise 
   ```bash
    allure generate allure-results
   ```
+   ```bash
    allure serve allure-results
   
 ## Allure Report 
