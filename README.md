@@ -23,6 +23,7 @@ Here We have create regression and smoke suite also and generate test case wise 
 - ```For generating Allure Report use these commands:```
   ```bash
    allure generate allure-results
+  ```
    allure serve allure-results
   
 ## Allure Report 
